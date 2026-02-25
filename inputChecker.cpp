@@ -13,6 +13,7 @@ std::string inputChecker(){
 
     std::getline(std::cin, input);
     
+    // Check for empty or whitespace input.
     if(input.empty() || isspace(input[0])){
         throw std::runtime_error("Empty string!");
     }
@@ -20,4 +21,3 @@ std::string inputChecker(){
         return input;
     }   
 }
-

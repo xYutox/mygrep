@@ -4,8 +4,7 @@
 #ifndef MYFUNCTIONS_H
 #define MYFUNCTIONS_H
 
-
-size_t checkStrings(std::string*, std::string*);
+std::vector<std::string> checkLines(std::vector<std::string>*, const std::string*);
 
 void readTheLines(std::vector<std::string>*, const std::string*);
 
