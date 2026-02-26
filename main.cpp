@@ -2,17 +2,19 @@
 
 // Include all needed header files.
 #include "inputChecker.cpp"
-#include "myFunctions.h"
+#include "dataFunctions.h"
+#include "fileFunctions.h"
 #include <iostream>
 #include <vector>
 #include <cstring>
+#include <algorithm>
 
 // The projects main function.
 int main(int argc, char* argv[]){
 
     // Initialize the variables.
     std::string userStr = "", searchWord = "", filename;
-    std::vector<std::string> lines(0), linesWithWord(0);
+    std::vector<LineData> lines(0), linesWithWord(0);
     std::vector<char> options(0);
     std::size_t foundStr;
 
@@ -50,12 +52,13 @@ int main(int argc, char* argv[]){
                 filename = argv[2];
 
                 // Read the lines to the vector from the file.
-                readTheLines(&lines, &filename);
+                readTheLines(&lines, &filename); 
+                
                 linesWithWord = checkLines(&lines, &searchWord);
 
                 // Print the lines containing the given word.
-                for (std::string line : linesWithWord){
-                    std::cout << line << std::endl;
+                for (LineData data : linesWithWord){
+                    std::cout << data.line << std::endl;
                 }
 
                 break;
@@ -66,8 +69,9 @@ int main(int argc, char* argv[]){
                 searchWord = argv[2];
                 filename = argv[3];
 
+                // Save the options to vector.
                 for (int i = 0; i < strlen(argv[1]); i++){
-                    options.push_back(argv[1][i]);
+                    options.push_back(tolower(argv[1][i]));
                 }
 
                 // Remove the "-o" option prefix.
@@ -77,6 +81,15 @@ int main(int argc, char* argv[]){
                 else{
                     throw std::runtime_error("Incorrect options!");
                 }
+
+                // Read the lines
+                readTheLines(&lines, &filename);
+
+                checkTheLines(&lines, &searchWord, &options);
+
+                // Check the lines with options
+
+                //readTheLines(&lines, &searchWord, &filename, &options);
 
                 // Read the lines to the vector from the file.
                 // readTheLines(&lines, &filename);
