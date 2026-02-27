@@ -1,7 +1,8 @@
+// Joel Juntunen
+
 #include "lineData.h"
 #include <string>
 #include <vector>
-
 
 #ifndef FILEFUNCTIONS_H
 #define FILEFUNCTIONS_H

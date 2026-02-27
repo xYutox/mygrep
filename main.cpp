@@ -85,15 +85,9 @@ int main(int argc, char* argv[]){
                 // Read the lines
                 readTheLines(&lines, &filename);
 
-                checkTheLines(&lines, &searchWord, &options);
+                checkAndPrintLines(&lines, &searchWord, &options);
 
                 // Check the lines with options
-
-                //readTheLines(&lines, &searchWord, &filename, &options);
-
-                // Read the lines to the vector from the file.
-                // readTheLines(&lines, &filename);
-                // linesWithWord = checkLines(&lines, &searchWord);
 
                 break;
             

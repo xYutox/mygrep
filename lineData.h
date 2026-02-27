@@ -13,6 +13,7 @@ struct LineData{
 struct Options{
     bool lineNumbering = false;
     bool ocurences = false;
+    bool ignoreCase = false;
 };
 
 #endif
