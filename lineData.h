@@ -14,6 +14,7 @@ struct Options{
     bool lineNumbering = false;
     bool ocurences = false;
     bool ignoreCase = false;
+    bool reverseSearch = false;
 };
 
 #endif

@@ -9,7 +9,7 @@
 
 std::vector<LineData> checkLines(std::vector<LineData>*, const std::string*);
 
-void checkAndPrintLines(std::vector<LineData>*, std::string*, std::vector<char>*);
+void checkAndPrintLines(std::vector<LineData>*, const std::string*, std::vector<char>*);
 
 void readTheLines(std::vector<std::string>*, const std::string*, const std::string*, const std::vector<char>*);
 
