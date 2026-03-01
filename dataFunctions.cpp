@@ -135,13 +135,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
     printTheLines(&linesWithWord, searchWord, &opt);
 }
 
-/*
-*
-*
-*
-*
-*
-*/
+// Prints the lines with options.
 void printTheLines(std::vector<LineData>* lines, const std::string* word, Options *opt){
 
     // Print the lines with word.

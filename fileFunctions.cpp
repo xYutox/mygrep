@@ -34,8 +34,6 @@ void readTheLines(std::vector<LineData>* lines, const std::string* fileName){
             lines->push_back(data);
         }
 
-        // tarkasta .fail() & .bad(), !.eof():n jälkeen
-
         inputFile.close();
     }
     else{
