@@ -56,11 +56,15 @@ int main(int argc, char* argv[]){
                 
                 linesWithWord = checkLines(&lines, &searchWord);
 
-                // Print the lines containing the given word.
-                for (LineData data : linesWithWord){
-                    std::cout << data.line << std::endl;
+                if (linesWithWord.size() == 0){
+                    std::cout << "\""<< searchWord << "\"" << " NOT found in " << "\"" << filename << "\"" << std::endl;
                 }
-
+                else {
+                    // Print the lines containing the given word.
+                    for (LineData data : linesWithWord){
+                        std::cout << data.line << std::endl;
+                    }
+                }
                 break;
             
             // With options.
@@ -70,7 +74,7 @@ int main(int argc, char* argv[]){
                 filename = argv[3];
 
                 // Save the options to vector.
-                for (int i = 0; i < strlen(argv[1]); i++){
+                for (long unsigned int i = 0; i < strlen(argv[1]); i++){
                     options.push_back(tolower(argv[1][i]));
                 }
 
@@ -85,7 +89,7 @@ int main(int argc, char* argv[]){
                 // Read the lines
                 readTheLines(&lines, &filename);
 
-                checkAndPrintLines(&lines, &searchWord, &options);
+                checkAndPrintLines(&lines, &searchWord, &options, &filename);
 
                 // Check the lines with options
 

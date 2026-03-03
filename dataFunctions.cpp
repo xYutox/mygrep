@@ -17,7 +17,7 @@ std::vector<LineData> checkLines(std::vector<LineData>* lines, const std::string
     std::vector<LineData> linesWithWord(0);
 
     // Check each line for searchWord. 
-    for (int i = 0; i < lines->size(); i++){
+    for (long unsigned int i = 0; i < lines->size(); i++){
 
         // Save the lines with the word.
         if (lines->at(i).line.find(*searchWord) != std::string::npos){          
@@ -36,7 +36,7 @@ std::vector<LineData> checkLines(std::vector<LineData>* lines, const std::string
 *   - std::vector<char>* options
 *
 */
-void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchWord, std::vector<char>* options){
+void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchWord, std::vector<char>* options, const std::string* filename){
 
     // Initialize the variables.
     std::vector<LineData> linesWithWord(0);
@@ -57,7 +57,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
                 break;
 
             case ('o'):
-                opt.ocurences = true;
+                opt.occurences = true;
                 break;
 
             case ('i'):
@@ -80,7 +80,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
 
         if (opt.ignoreCase){
             
-            for (int i = 0; i < lines->size(); i++){            
+            for (long unsigned int i = 0; i < lines->size(); i++){            
                 
                 // Convert line to lower case letters.          
                 lineToLower = lines->at(i).line;
@@ -95,7 +95,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
         }
         else{        
             // Without ignore case.
-            for (int i = 0; i < lines->size(); i++){
+            for (long unsigned int i = 0; i < lines->size(); i++){
         
                 // Save the lines without the word.
                 if (lines->at(i).line.find(*searchWord) == std::string::npos){
@@ -108,7 +108,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
     else{
         if(opt.ignoreCase){          
             
-            for (int i = 0; i < lines->size(); i++){            
+            for (long unsigned int i = 0; i < lines->size(); i++){            
                 
                 // Convert line to lower case letters.          
                 lineToLower = lines->at(i).line;    
@@ -121,7 +121,7 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
         }
         else{        
             // Without ignore case.
-            for (int i = 0; i < lines->size(); i++){
+            for (long unsigned int i = 0; i < lines->size(); i++){
         
                 if (lines->at(i).line.find(*searchWord) != std::string::npos){
                     linesWithWord.push_back(lines->at(i));
@@ -132,7 +132,12 @@ void checkAndPrintLines(std::vector<LineData>* lines, const std::string* searchW
     }
 
     // Print the lines.
-    printTheLines(&linesWithWord, searchWord, &opt);
+    if (linesWithWord.size() != 0){
+        printTheLines(&linesWithWord, searchWord, &opt);
+    }
+    else{
+        std::cout << "\""<< *searchWord << "\"" << " NOT found in " << "\"" << *filename << "\"" << std::endl;
+    }
 }
 
 // Prints the lines with options.
@@ -140,7 +145,7 @@ void printTheLines(std::vector<LineData>* lines, const std::string* word, Option
 
     // Print the lines with word.
     if (opt->lineNumbering){
-        for (int i = 0; i < lines->size(); i++){
+        for (long unsigned int i = 0; i < lines->size(); i++){
             std::cout << lines->at(i).lineNumber << ": " << lines->at(i).line << std::endl;
         }
     }
@@ -150,15 +155,15 @@ void printTheLines(std::vector<LineData>* lines, const std::string* word, Option
         }
     }
 
-    // Print the ocurences.
-    if(opt->ocurences){
+    // Print the occurences.
+    if(opt->occurences){
 
         if (opt->reverseSearch){
-            std::cout << "\nOcurences of lines NOT containing \"" << *word << "\": " << lines->size() << std::endl;
+            std::cout << "\nOccurences of lines NOT containing \"" << *word << "\": " << lines->size() << std::endl;
 
         }
         else{
-            std::cout << "\nOcurences of lines containing \"" << *word << "\": " << lines->size() << std::endl;
+            std::cout << "\nOccurences of lines containing \"" << *word << "\": " << lines->size() << std::endl;
         }
     }
 }

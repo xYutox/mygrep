@@ -6,13 +6,13 @@
 #define LINEDATA_H
 
 struct LineData{
-    int lineNumber;
+    long unsigned int lineNumber;
     std::string line;
 };
 
 struct Options{
     bool lineNumbering = false;
-    bool ocurences = false;
+    bool occurences = false;
     bool ignoreCase = false;
     bool reverseSearch = false;
 };
